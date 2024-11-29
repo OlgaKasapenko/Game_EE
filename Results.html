@@ -1,0 +1,14 @@
+{{ block title }}Results{{ endblock }}
+{{ block content }}
+
+    <h2>Результаты</h2>
+
+    <p>Вы выбрали {{ player.field_maybe_none('guess') }}.</p>
+
+    <p>Текущие монеты: {{ player.money }}</p>
+
+    {{ next_button }}
+
+    {{ include_sibling 'instructions.html' }}
+
+{{ endblock }}
