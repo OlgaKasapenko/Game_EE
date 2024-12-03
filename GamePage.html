@@ -1,0 +1,27 @@
+{{ block title }}
+    Раунд {{ round_number }} из {{ C.NUM_ROUNDS }}
+{{ endblock }}
+
+{{ block content }}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Текущая ситуация</h5>
+            <p>Текущая сумма: {{ current_amount }}</p>
+            <p>Общий выигрыш: {{ total_payoff }}</p>
+            <p class="alert alert-info">
+                Вероятность успеха при риске в этом раунде: <strong>{{ success_rate }}%</strong>
+            </p>
+            
+            {{ if previous_result }}
+            <div class="alert alert-secondary">
+                Результат прошлого раунда: {{ previous_result }}
+            </div>
+            {{ endif }}
+            
+            <p>Что вы хотите сделать?</p>
+            {{ formfield 'choice' }}
+        </div>
+    </div>
+
+    {{ next_button }}
+{{ endblock }} 
