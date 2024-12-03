@@ -1,0 +1,43 @@
+{{ block title }}
+    Результаты всех игроков
+{{ endblock }}
+
+{{ block content }}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Итоговые результаты всех участников</h5>
+            
+            {{ for player_result in all_players_results }}
+            <div class="mb-4">
+                <h6>Игрок {{ player_result.player_id }} (Итоговый выигрыш: {{ player_result.final_payoff }})</h6>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Раунд</th>
+                            <th>Начальная сумма</th>
+                            <th>Действие</th>
+                            <th>Конечная сумма</th>
+                            <th>Общий выигрыш</th>
+                            <th>Результат</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{ for round in player_result.rounds }}
+                        <tr>
+                            <td>{{ round.round_number }}</td>
+                            <td>{{ round.initial_amount }}</td>
+                            <td>{{ round.choice }}</td>
+                            <td>{{ round.final_amount }}</td>
+                            <td>{{ round.total_payoff }}</td>
+                            <td>{{ round.result }}</td>
+                        </tr>
+                        {{ endfor }}
+                    </tbody>
+                </table>
+            </div>
+            {{ endfor }}
+        </div>
+    </div>
+
+    {{ next_button }}
+{{ endblock }} 
